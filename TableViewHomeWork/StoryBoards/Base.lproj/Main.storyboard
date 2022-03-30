@@ -179,11 +179,11 @@
             </objects>
             <point key="canvasLocation" x="4085.625" y="-231.33802816901408"/>
         </scene>
-        <!--Item-->
+        <!--Another contacts-->
         <scene sceneID="Lps-HB-lOg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T26-ga-xRD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.fill" catalog="system" id="HzT-GF-GJs"/>
+                    <tabBarItem key="tabBarItem" title="Another contacts" image="person.fill" catalog="system" id="HzT-GF-GJs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Yan-JV-lRR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
@@ -198,11 +198,11 @@
             </objects>
             <point key="canvasLocation" x="2244.375" y="474.29577464788736"/>
         </scene>
-        <!--Item-->
+        <!--Contacts-->
         <scene sceneID="sSs-aa-NzO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EXL-Xs-99d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person" catalog="system" id="Wle-ah-Bf0"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person" catalog="system" id="Wle-ah-Bf0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ee8-N5-deE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>

@@ -10,7 +10,13 @@ import UIKit
 class ListOfContactsViewController: UITableViewController {
     
     var listOfContacts = ContactModel.getListOfContacts()
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? AboutContactViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -22,6 +28,7 @@ class ListOfContactsViewController: UITableViewController {
         destination.eMailDelegator = contact.eMail
         
     }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         listOfContacts.count
@@ -43,6 +50,26 @@ class ListOfContactsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToFirst", sender: nil)
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        listOfContacts.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let moved = listOfContacts.remove(at: sourceIndexPath.row)
+        listOfContacts.insert(moved, at: destinationIndexPath.row)
+        tableView.reloadData()
     }
     
 }
