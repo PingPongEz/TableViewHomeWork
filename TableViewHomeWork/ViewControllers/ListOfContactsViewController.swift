@@ -72,4 +72,21 @@ class ListOfContactsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let actionDone = doneAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [actionDone])
+    }
+    
+    func doneAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
+            self.listOfContacts.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
+        }
+        action.backgroundColor = .systemBlue
+        action.image = UIImage(systemName: "checkmark")
+        
+        return action
+    }
+    
 }
