@@ -74,8 +74,11 @@ class ListOfContactsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionDone = doneAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [actionDone])
+        let favorite = favoriteContact(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [actionDone, favorite])
     }
+    
+    
     
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
@@ -86,6 +89,18 @@ class ListOfContactsViewController: UITableViewController {
         action.backgroundColor = .systemBlue
         action.image = UIImage(systemName: "checkmark")
         
+        return action
+    }
+    
+    func favoriteContact(at indexPath: IndexPath) -> UIContextualAction {
+        var person = listOfContacts[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "Like") { (action, view, completion) in
+            person.isFavorite = !person.isFavorite
+            self.listOfContacts[indexPath.row] = person
+            completion(true)
+        }
+        action.backgroundColor = person.isFavorite ? .systemYellow : .systemGray
+        action.image = UIImage(systemName: "heart")
         return action
     }
     

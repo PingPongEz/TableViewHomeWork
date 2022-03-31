@@ -37,4 +37,6 @@ struct ContactModel {
         return listOfContacts
     }
     
+    var isFavorite = false
+    
 }
